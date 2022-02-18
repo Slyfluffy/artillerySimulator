@@ -53,7 +53,7 @@ public:
 private:
    double x;                 // horizontal position
    double y;                 // vertical position
-   static double metersFromPixels;
+   double metersFromPixels;
 };
 
 // stream I/O useful for debugging
