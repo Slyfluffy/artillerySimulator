@@ -88,9 +88,9 @@ void computeNearbyAirDensity(float altitude, Position * p0, Position * p1) {
       *p0 = Position(60000, .0003097);
       *p1 = Position(70000, .0000828);
    }
-   else if (altitude < 80000) {
+   else if (altitude <= 80000) {
       *p0 = Position(70000, .0000828);
-      *p1 = Position(60000, .0000185);
+      *p1 = Position(80000, .0000185);
    }
 }
 
@@ -115,6 +115,13 @@ float computeAirDensity(float altitude) {
    return 1.225;
 }
 
+/*********************************************
+ * ARTILLERY :: COMPUTENEARBYSOUNDVELOCITY
+ * INPUTS    :: altitude, p0, p1
+ * OUTPUTS   :: NONE
+ * Adjusts the two nearest points to match the
+ * sound velocity table.
+ ********************************************/
 void computeNeabySoundVelocity(float altitude, Position * p0, Position * p1) {
    float multiplyX = int(altitude / 1000);
    float lowX = multiplyX * 1000;
@@ -143,12 +150,18 @@ void computeNeabySoundVelocity(float altitude, Position * p0, Position * p1) {
       *p0 = Position(25000, 295);
       *p1 = Position(30000, 305);
    }
-   else if (altitude < 40000) {
+   else if (altitude <= 40000) {
       *p0 = Position(30000, 305);
       *p1 = Position(40000, 324);
    }
 }
 
+/**************************************************
+ * ARTILLERY :: COMPUTEVELOCITYSOUND
+ * INPUTS    :: altitude
+ * OUTPUTS   :: velocitySound
+ * Returns the speed of sound at a certain altitude
+ *************************************************/
 float computeVelocitySound(float altitude) {
    if (altitude > 0) {
       Position p0;
@@ -162,9 +175,105 @@ float computeVelocitySound(float altitude) {
    return 340;
 }
 
+/********************************************
+ * ARTILLERY :: COMPUTEGRAVITY
+ * INPUTS    :: altitude
+ * OUTPUTS   :: gravity
+ * Computes the gravity at a certain altitude
+ *******************************************/
 float computeGravity(float altitude) {
    float e = (6371009/(6371009 + altitude));
    return 9.807 * (e * e);
 }
 
+/*********************************************
+ * ARTILLERY :: COMPUTENEARBYCOEFFICIENT
+ * INPUTS    :: mach, p0, p1
+ * OUTPUTS   :: airDensity
+ * Sets the nearest points to the correct mach
+ * and coefficient.
+ ********************************************/
+void computeNearbyCoefficient(float mach, Position * p0, Position * p1) {
+   if (mach < .5) {
+      *p0 = Position(.3, .1629);
+      *p1 = Position(.5, .1659);
+   }
+   else if (mach < .7) {
+      *p0 = Position(.5, .1659);
+      *p1 = Position(.7, .2031);
+   }
+   else if (mach < .89) {
+      *p0 = Position(.7, .2031);
+      *p1 = Position(.89, .2597);
+   }
+   else if (mach < .92) {
+      *p0 = Position(.89, .2597);
+      *p1 = Position(.92, .3010);
+   }
+   else if (mach < .96) {
+      *p0 = Position(.92, .3010);
+      *p1 = Position(.96, .3287);
+   }
+   else if (mach < .98) {
+      *p0 = Position(.96, .3287);
+      *p1 = Position(.96, .4002);
+   }
+   else if (mach < 1) {
+      *p0 = Position(.96, .4002);
+      *p1 = Position(1, .4258);
+   }
+   else if (mach < 1.02) {
+      *p0 = Position(1, .4258);
+      *p1 = Position(1.02, .4335);
+   }
+   else if (mach < 1.06) {
+      *p0 = Position(1.02, .4335);
+      *p1 = Position(1.06, .4483);
+   }
+   else if (mach < 1.24) {
+      *p0 = Position(1.06, .4483);
+      *p1 = Position(1.24, .4064);
+   }
+   else if (mach < 1.53) {
+      *p0 = Position(1.24, .4064);
+      *p1 = Position(1.53, .3663);
+   }
+   else if (mach < 1.99) {
+      *p0 = Position(1.53, .3663);
+      *p1 = Position(1.99, .2897);
+   }
+   else if (mach < 2.87) {
+      *p0 = Position(1.99, .2897);
+      *p1 = Position(2.87, .2297);
+   }
+   else if (mach < 2.89) {
+      *p0 = Position(2.87, .2297);
+      *p1 = Position(2.89, .2306);
+   }
+   else if (mach <= 5) {
+      *p0 = Position(2.89, .2306);
+      *p1 = Position(5, .2656);
+   }
+}
+
+/************************************************
+ * ARTILLERY :: COMPUTECOEFFICIENT
+ * INPUTS    :: velocity, vSound
+ * OUTPUTS   :: cDrag
+ * Calculates and returns the coefficient of drag
+ ***********************************************/
+float computeCoefficient(float velocity, float vSound) {
+   float mach = velocity / vSound;
+   
+   if (mach > .3) {
+      Position p0;
+      Position p1;
+      computeNearbyCoefficient(mach, &p0, &p1);
+      
+      float top = (p1.getMetersY()-p0.getMetersY()) * (mach - p0.getMetersX());
+      return p0.getMetersY() + (top / (p1.getMetersX() - p0.getMetersX()));
+   }
+   
+   return .1629;
+}
 #endif /* environment_h */

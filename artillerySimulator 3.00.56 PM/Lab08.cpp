@@ -158,25 +158,11 @@ int main(int argc, char** argv)
 //   // set everything into action
 //   ui.run(callBack, &demo);
 
-   cout << computeGravity(3000);
+   cout << computeAirDensity(80000) << endl;
    return 0;
 }
 
-float computeCoefficient(float velocity, float vSound) {
-   float mach = velocity / vSound;
-   float coefficient = 0;
-   
-   if (mach < .3)
-      coefficient = .1629;
-   else if (mach < .5)
-      coefficient = .1659;
-   else if (mach < .7)
-      coefficient = .2031;
-   else if (mach < .890)
-      coefficient = .2597;
-   
-   return coefficient;
-}
+
 
 float convertToRadians(float degree)                 { return (2 * M_PI * (degree / 360)); }
 
