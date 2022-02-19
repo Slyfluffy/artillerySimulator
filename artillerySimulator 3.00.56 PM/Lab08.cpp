@@ -1,14 +1,15 @@
 /*************************************************************
  * 1. Name:
- *      The Key
+ *      Olivia Seymour, Journey Curtis
  * 2. Assignment Name:
- *      Lab 08: M777 Howitzer
+ *      Lab 07: M777 Howitzer
  * 3. Assignment Description:
  *      Simulate firing the M777 howitzer 15mm artillery piece
  * 4. What was the hardest part? Be as specific as possible.
- *      ??
+ *      The hardest part by far is trying to understand the physics.
+ *		It's been very frustrating.
  * 5. How long did it take for you to complete the assignment?
- *      ??
+ *      We spent about 6 hours on this.
  *****************************************************************/
 
 #include <cassert>      // for ASSERT
@@ -182,16 +183,16 @@ int main(int argc, char** argv)
 
    //cout << computeAirDensity(80000) << endl;
 
-   // Get the initial info
+	// Get the initial info
 	float angle = convertToRadians(getAngle());
-	Position * point = new Position(0, 0);
+	Position* point = new Position(0, 0);
 	float velocity = 827;
 	const float mass = 46.8;
 	const float area = computeArea(.15489);
 	float airDensity = 1.225;
 	float hangtime = 0;
 
-   // Do the math
+	// Do the math
 	do {
 		// Get sound velocity
 		float soundVelocity = computeVelocitySound(point->getMetersY());
@@ -211,8 +212,8 @@ int main(int argc, char** argv)
 		point->addMetersX(point->getMetersX() + dx * .5 + .5 * ddx * .25);
 		point->addMetersY(point->getMetersY() + dy * .5 + .5 * ddy * .25);
 		// Update velocity
-		dx *= ddx;
-		dy *= ddy;
+		dx += ddx * .5;
+		dy += ddy * .5;
 		velocity = calculateTSpeed(dx, dy);
 		// Update angle
 		angle = computeAngleFromComponents(dx, dy);
@@ -222,8 +223,11 @@ int main(int argc, char** argv)
 		hangtime += .5;
 
 	} while (point->getMetersY() > 0);
-   // Show the results
+	// Show the results
 	displayResult(point->getMetersX(), hangtime);
+	
+
+
    return 0;
 
 }
