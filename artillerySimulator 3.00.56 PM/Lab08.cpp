@@ -20,6 +20,8 @@
 #include "position.h"   // for POINT
 using namespace std;
 
+const float M_PI = 3.14159;
+
 /*************************************************************************
  * Demo
  * Test structure to capture the LM that will move around the screen
@@ -125,9 +127,29 @@ using namespace std;
 //
 //double Position::metersFromPixels = 40.0;
 
-float computeDragForce(float density, float velocity, float surfaceArea);
-float computeForce(float mass, float acceleration);
+float computeDragForce(float density, float soundV, float velocity, float surfaceArea);
+float computeForce(float mass, float acceleration) { return mass * acceleration; }
 float computeAirDensity(float altitude);
+
+
+float convertToRadians(float degree) { return (2 * M_PI * (degree / 360)); }
+
+float computeAngleFromComponents(float dx, float dy) { return atan2(dy, dx); }
+float computeArea(float diameter) { return M_PI * ((diameter / 2) * (diameter / 2)); }
+
+float calculateForce(float mass, float acceleration) { return mass * acceleration; }
+float calculateVSpeed(float dy, float angle) { return dy * cos(angle); }
+float calculateHSpeed(float dx, float angle) { return dx * sin(angle); }
+float calculateTSpeed(float dx, float dy) { return sqrt((dx * dx) + (dy * dy)); }
+
+int getAngle();
+void displayResult(double distance, float hangtime);
+
+float linearInterpolation(float x, float x0, float x1, float y0, float y1);
+
+//float getDragCoefficient(float mach);
+
+
 
 /*********************************
  * Initialize the simulation and set it in motion
@@ -158,20 +180,87 @@ int main(int argc, char** argv)
 //   // set everything into action
 //   ui.run(callBack, &demo);
 
-   cout << computeAirDensity(80000) << endl;
+   //cout << computeAirDensity(80000) << endl;
+
+   // Get the initial info
+	float angle = convertToRadians(getAngle());
+	Position * point = new Position(0, 0);
+	float velocity = 827;
+	const float mass = 46.8;
+	const float area = computeArea(.15489);
+	float airDensity = 1.225;
+	float hangtime = 0;
+
+   // Do the math
+	do {
+		// Get sound velocity
+		float soundVelocity = computeVelocitySound(point->getMetersY());
+		// Use that to get mach
+		float mach = velocity / soundVelocity;
+		// Get the drag force
+		float dragForce = computeDragForce(airDensity, soundVelocity, velocity, area);
+		// Acceleration now
+		float acc = dragForce / mass;
+		// Velocities
+		float dx = sin(angle) * velocity;
+		float dy = cos(angle) * velocity;
+		// Accelerations
+		float ddx = -sin(angle) * acc;
+		float ddy = -cos(angle) * acc - computeGravity(point->getMetersY());
+		// Update position
+		point->addMetersX(point->getMetersX() + dx * .5 + .5 * ddx * .25);
+		point->addMetersY(point->getMetersY() + dy * .5 + .5 * ddy * .25);
+		// Update velocity
+		dx *= ddx;
+		dy *= ddy;
+		velocity = calculateTSpeed(dx, dy);
+		// Update angle
+		angle = computeAngleFromComponents(dx, dy);
+		// Update air density
+		airDensity = computeAirDensity(point->getMetersY());
+		// Update hangtime
+		hangtime += .5;
+
+	} while (point->getMetersY() > 0);
+   // Show the results
+	displayResult(point->getMetersX(), hangtime);
    return 0;
+
 }
 
+int getAngle() {
+	cout << "What is the angle of the howitzer where 0 is up? ";
+	int angle;
+	cin >> angle;
+	return angle;
+}
 
+void displayResult(double distance, float hangtime) {
+	cout << "Distance:     " << distance << "m     ";
+	cout << "Hang Time:     " << hangtime << "s     \n";
+}
 
-float convertToRadians(float degree)                 { return (2 * M_PI * (degree / 360)); }
+float computeDragForce(float density, float soundV, float velocity, float surfaceArea) {
+	float c = computeCoefficient(velocity, soundV);
+	return .5 * c * density * velocity * velocity * surfaceArea;
+}
 
-float computeAngleFromComponents(float dx, float dy) { return atan2(dy, dx);               }
-float computeArea(float diameter) { return M_PI * ((diameter / 2) * (diameter / 2)); }
-
-float calculateForce(float mass, float acceleration) { return mass * acceleration;         }
-float calculateVSpeed(float dy, float angle)         { return dy * cos(angle);             }
-float calculateHSpeed(float dx, float angle)         { return dx * sin(angle);             }
-float calculateTSpeed(float dx, float dy)            { return sqrt((dx * dx) + (dy * dy)); }
+float linearInterpolation(float x, float x0, float x1, float y0, float y1) {
+	float y = (y0 + ((x - x0) * (y1 - y0)) / (x1 - x0));
+	return y;
+}
+//
+//float getDragCoefficient(float m) {
+//	// Put our tables in here
+//	float mach[16] = { .3, .5, .7, .89, .92, .96, .98, 1, 1.02, 
+//		1.06, 1.24, 1.53, 1.99, 2.87, 2.89, 5};
+//	float dragCoef[16] = { .1629, .1659, .2031, .2597, .301, 
+//		.3287, .4002, .4258, .4335, .4483, .4064, .3663, .2897, .2297, .2306, .2656};
+//
+//	// Find where our mach is in this array
+//	for (int i = 0; m < mach[i]; i++) {
+//
+//	}
+// }
 
 

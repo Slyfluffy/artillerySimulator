@@ -122,7 +122,7 @@ float computeAirDensity(float altitude) {
  * Adjusts the two nearest points to match the
  * sound velocity table.
  ********************************************/
-void computeNeabySoundVelocity(float altitude, Position * p0, Position * p1) {
+void computeNearbySoundVelocity(float altitude, Position * p0, Position * p1) {
    float multiplyX = int(altitude / 1000);
    float lowX = multiplyX * 1000;
    
@@ -166,7 +166,7 @@ float computeVelocitySound(float altitude) {
    if (altitude > 0) {
       Position p0;
       Position p1;
-      computeNeabySoundVelocity(altitude, &p0, &p1);
+      computeNearbySoundVelocity(altitude, &p0, &p1);
       
       float top = (p1.getMetersY()-p0.getMetersY()) * (altitude - p0.getMetersX());
       return p0.getMetersY() + (top / (p1.getMetersX() - p0.getMetersX()));
