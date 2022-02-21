@@ -45,7 +45,8 @@
 		C1D4EB3D2577FC14002B56E3 /* test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = test.h; sourceTree = "<group>"; };
 		C1D4EB462577FC25002B56E3 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		C1D4EB472577FC25002B56E3 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
-		CEB0EB0A27C00DAD00A886B9 /* environment.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = environment.h; sourceTree = "<group>"; };
+		CEB0D94527C3FC6E00096182 /* physics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = physics.h; sourceTree = "<group>"; };
+		CEB0D94927C40C8A00096182 /* velocity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = velocity.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,10 +65,10 @@
 		C1D4EB1D2577FB0F002B56E3 = {
 			isa = PBXGroup;
 			children = (
-				CEB0EB0A27C00DAD00A886B9 /* environment.h */,
 				C1D4EB342577FC12002B56E3 /* Lab08.cpp */,
 				C1D4EB322577FC12002B56E3 /* ground.cpp */,
 				C1D4EB382577FC13002B56E3 /* ground.h */,
+				CEB0D94527C3FC6E00096182 /* physics.h */,
 				C1D4EB3C2577FC14002B56E3 /* position.h */,
 				C1D4EB332577FC12002B56E3 /* position.cpp */,
 				C1D4EB3D2577FC14002B56E3 /* test.h */,
@@ -77,6 +78,7 @@
 				C1D4EB352577FC12002B56E3 /* uiDraw.cpp */,
 				C1D4EB3B2577FC13002B56E3 /* uiInteract.h */,
 				C1D4EB3A2577FC13002B56E3 /* uiInteract.cpp */,
+				CEB0D94927C40C8A00096182 /* velocity.h */,
 				C1D4EB272577FB0F002B56E3 /* Products */,
 				C1D4EB452577FC25002B56E3 /* Frameworks */,
 			);
