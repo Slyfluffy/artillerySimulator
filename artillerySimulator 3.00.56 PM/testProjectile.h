@@ -8,6 +8,7 @@
 #ifndef testProjectile_h
 #define testProjectile_h
 
+#include "physics.h"
 #include "projectile.h"
 class TestProjectile {
 public:
@@ -56,27 +57,30 @@ public:
 //   void testMove() {
 //      Position pos;
 //      float angle;
-//      
+//
 //      // -90 degree scenario
 //      angle = -M_PI/2;
 //      Projectile p(angle, pos);
 //      p.move();
-//      
+//
 //      // -45 degree scenario
 //      angle = -M_PI/4;
 //      p = Projectile(angle, pos);
 //      p.move();
-//      
+//
 //      // 0 degree scenario
 //      angle = 0;
 //      p = Projectile(angle, pos);
 //      p.move();
-//      
+//      assert(p.getVelocity().getDx() == 0);
+//      assert(p.getVelocity().getDy() == (827 - computeGravity(0)));
+//
 //      // 45 degree scenario
 //      angle = M_PI/4;
 //      p = Projectile(angle, pos);
 //      p.move();
-//      
+//
+//
 //      // 90 degree scenario
 //      angle = M_PI/2;
 //      p = Projectile(angle, pos);
