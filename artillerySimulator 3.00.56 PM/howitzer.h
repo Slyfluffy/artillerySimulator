@@ -8,36 +8,49 @@
 #ifndef howitzer_h
 #define howitzer_h
 
-#include <cmath>
 #include "position.h"
 #include "uiDraw.h"
 
 class Howitzer {
-protected:
+private:
    Position p;
    float angle;
    float age;
    
 public:
-   Howitzer();
-   Howitzer(Position p);
+   Howitzer() { }
+   Howitzer(Position p) { }
    
-   const float getAge();
-   const float getAngle();
-   const Position getPosition();
+   float getAge() const         { return age;   }
+   float getAngle() const       { return angle; }
+   Position getPosition() const { return p;     }
    
-   void setAngle(float angle);
+   void setAngle(float angle) { }
    
-   void rotateLeft();
-   void rotateRight();
+   void rotateLeft() {
+      
+   }
    
-   void rotateUp();
-   void rotateDown();
+   void rotateRight() {
+      
+   }
+   
+   void rotateUp() {
+      
+   }
+   
+   void rotateDown() {
+      
+   }
    
    void fire() { age = 2; }
-   void reset();
+   void reset() {
+      
+   }
    
-   void draw(ogstream & gout);
+   void draw(ogstream & gout) {
+      
+   }
 };
 
 #endif /* howitzer_h */

@@ -8,9 +8,9 @@
 #ifndef testProjectile_h
 #define testProjectile_h
 
-#include "physics.h"
 #include "projectile.h"
 #include <cassert>
+
 class TestProjectile {
 public:
    void run() {
@@ -36,24 +36,26 @@ public:
        assert(p->getVelocity().getDy() == v->getDy());
        
        // Teardown
-       delete[] p;
-       delete[] pos;
-       delete[] v;
+      delete p;
+      delete pos;
+      delete v;
    }
    
    void testLinearInterpolation1() {
+      Projectile p;
        // Exersize and verify
        // Positive slope
-       assert(linearInterpolation(1, 0, 2, 0, 2) == 1.0);
+       assert(p.linearInterpolation(1, 0, 2, 0, 2) == 1.0);
        // Negative slope
-       assert(linearInterpolation(1, 0, 2, 2, 0) == 1.0);
+       assert(p.linearInterpolation(1, 0, 2, 2, 0) == 1.0);
        // Horizontal line
-       assert(linearInterpolation(1, 0, 2, 0, 0) == 0.0);
+       assert(p.linearInterpolation(1, 0, 2, 0, 0) == 0.0);
        // Vertical line
-       assert(linearInterpolation(1, 1, 1, 0, 2) == 1.0);
+       assert(p.linearInterpolation(1, 1, 1, 0, 2) == 1.0);
    }
    
    void testLinearInterpolation2() {
+      Projectile p;
        // Positive slope
        Mapping zero;
        Mapping one;
@@ -61,22 +63,23 @@ public:
        zero.range = 0;
        one.domain = 2;
        one.range = 2;
-       assert(linearInterpolation(zero, one, 1) == 1.0);
+       assert(p.linearInterpolation(zero, one, 1) == 1.0);
        // Negative slope
        zero.range = 2;
        one.range = 0;
-       assert(linearInterpolation(zero, one, 1) == 1.0);
+       assert(p.linearInterpolation(zero, one, 1) == 1.0);
        // Horizontal line
        zero.range = 0;
-       assert(linearInterpolation(zero, one, 1) == 0.0);
+       assert(p.linearInterpolation(zero, one, 1) == 0.0);
        // Vertical line
        zero.domain = 1;
        one.domain = 1;
        one.range = 2;
-       assert(linearInterpolation(zero, one, 1) == 1.0);
+       assert(p.linearInterpolation(zero, one, 1) == 1.0);
    }
    
    void testLinearInterpolation3() {
+      Projectile p;
        // Positive slope
        Mapping zerozero;
        zerozero.domain = 0;
@@ -97,55 +100,59 @@ public:
        onetwo.domain = 1;
        onetwo.range = 2;
        Mapping map[] = { zerozero, twotwo };
-       assert(linearInterpolation(map, 2 , 1) == 1.0);
+       assert(p.linearInterpolation(map, 2 , 1) == 1.0);
        // Negative slope
        map[0] = zerotwo;
        map[1] = twozero;
-       assert(linearInterpolation(map, 2, 1) == 1.0);
+       assert(p.linearInterpolation(map, 2, 1) == 1.0);
        // Horizontal line
        map[0] = zerozero;
-       assert(linearInterpolation(map, 2, 1) == 0.0);
+       assert(p.linearInterpolation(map, 2, 1) == 0.0);
        // Vertical line
        map[0] = onezero;
        map[1] = onetwo;
-       assert(linearInterpolation(map, 2, 1) == 1.0);
+       assert(p.linearInterpolation(map, 2, 1) == 1.0);
    }
    
    void testComputeAirDensity() {
+      Projectile p;
        // Table
-       assert(computeAirDensity(15000) == 0.1948);
+       assert(p.computeAirDensity(15000) == 0.1948);
        // Low Interp
-       assert(computeAirDensity(500) == 1.1685);
+       assert(p.computeAirDensity(500) == 1.1685);
        // High Interp
-       assert(computeAirDensity(65000) == 0.00019625);
+       assert(p.computeAirDensity(65000) == 0.00019625);
    }
    
    void testComputeVelocitySound() {
+      Projectile p;
        // Table
-       assert(computeVelocitySound(8000) == 308);
+       assert(p.computeVelocitySound(8000) == 308);
        // Low Interp
-       assert(computeVelocitySound(500) == 338);
+       assert(p.computeVelocitySound(500) == 338);
        // High Interp
-       assert(computeVelocitySound(35000) == 314.5);
+       assert(p.computeVelocitySound(35000) == 314.5);
       
    }
    
    void testComputeGravity() {
+      Projectile p;
        // Table
-       assert(computeGravity(8000) == 9.782);
+       assert(p.computeGravity(8000) == 9.782);
        // Low Interp
-       assert(computeGravity(500) == 9.8055);
+       assert(p.computeGravity(500) == 9.8055);
        // High Interp
-       assert(computeGravity(8000) == 9.7375);
+       assert(p.computeGravity(8000) == 9.7375);
    }
    
    void testComputeCoefficient() {
+      Projectile p;
        // Table (mach = 1.06)
-       assert(computeCoefficient(326.48, 308) == 0.4483);
+       assert(p.computeCoefficient(326.48, 308) == 0.4483);
        // Low Interp (mach = .4)
-       assert(computeCoefficient(120, 300) == 0.1644);
+       assert(p.computeCoefficient(120, 300) == 0.1644);
        // High Interp (mach = 3.945)
-       assert(computeCoefficient(1183.5, 300) == 0.2481);
+       assert(p.computeCoefficient(1183.5, 300) == 0.2481);
    }
    
 //   void testMove() {

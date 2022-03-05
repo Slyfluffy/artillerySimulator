@@ -19,9 +19,9 @@
 #include "ground.h"     // for GROUND
 #include "test.h"
 #include "Simulator.h"
-#include "physics.h"
-#include "velocity.h"
-#include "position.h"   // for POINT
+//#include "physics.h"
+//#include "velocity.h"
+//#include "position.h"   // for POINT
 using namespace std;
 
 /*************************************************************************
@@ -165,78 +165,79 @@ int main(int argc, char** argv)
    //cout << computeAirDensity(80000) << endl;
 
 	// Get the initial info
-	float angle = convertToRadians(getAngle());
-	Position point = Position(0, 0);
-	
-	const float mass = 46.7;
-   const float radius = .15489 / 2;
+//	float angle = convertToRadians(getAngle());
+//	Position point = Position(0, 0);
+//
+//	const float mass = 46.7;
+//   const float radius = .15489 / 2;
+//
+//   Velocity v = Velocity();
+//
+//   float tInterval = .5;
+//   v.setDx(sin(angle) * (827 * tInterval));
+//   v.setDy(cos(angle) * (827 * tInterval));
+//   point.addMetersX(v.getDx());
+//   point.addMetersY(v.getDy());
+//
+//	float hangtime = 0;
+//
+//   float previousX = 0;
+//   float previousY = 0;
+//   float previousT = 0;
+//
+//	// Do the math
+//	do {
+//      float altitude = point.getMetersY();
+//
+//		// Get sound velocity
+//      float vSound = computeVelocitySound(altitude) * tInterval;
+//
+//      // Now figure out coefficient
+//      float coefficient = computeCoefficient(v.getSpeed(), vSound);
+//
+//      // Density is up next
+//      float density = computeAirDensity(altitude);
+//
+//		// Put them all together to figure out drag
+//      float dragForce = 0;
+//      if (angle != 0)
+//         dragForce = computeDragForce(density, coefficient, radius, v.getSpeed());
+//
+//		// Use drag to calculate acceleration
+//      float ax = calculateAcceleration(dragForce, mass);
+//
+//		// Velocities
+//      v.addDx(ax);
+//      v.addDy(-computeGravity(altitude) * tInterval);
+//      cout << "dx: " << v.getDx() << " dy: " << v.getDy() << endl;
+//
+//		// Update position
+//      previousX = point.getMetersX();
+//      previousY = point.getMetersY();
+//      point.addMetersX(v.getDx());
+//      point.addMetersY(v.getDy());
+//      cout << "distance: " << point.getMetersX() << endl;
+//      cout << "altitude: " << point.getMetersY() << endl << endl;
+//
+//		// Update hangtime
+//      if (altitude > 0) {
+//         previousT = hangtime;
+//         hangtime += tInterval;
+//      }
+//
+//   } while (point.getMetersY() > 0);
+//	// Show the results
+//   float distance = linearInterpolation(0, previousY, point.getMetersY(), previousX, point.getMetersX());
+//
+//   float time;
+//   if (angle != 0)
+//      time = linearInterpolation(distance, previousX, point.getMetersX(), previousT, hangtime);
+//   else
+//      time = linearInterpolation(0, previousY, point.getMetersY(), previousT, hangtime);
+//
+//   displayResult(distance, time);
    
-   Velocity v = Velocity();
-   
-   float tInterval = .5;
-   v.setDx(sin(angle) * (827 * tInterval));
-   v.setDy(cos(angle) * (827 * tInterval));
-   point.addMetersX(v.getDx());
-   point.addMetersY(v.getDy());
-   
-	float hangtime = 0;
-   
-   float previousX = 0;
-   float previousY = 0;
-   float previousT = 0;
-
-	// Do the math
-	do {
-      float altitude = point.getMetersY();
-      
-		// Get sound velocity
-      float vSound = computeVelocitySound(altitude) * tInterval;
-      
-      // Now figure out coefficient
-      float coefficient = computeCoefficient(v.getSpeed(), vSound);
-      
-      // Density is up next
-      float density = computeAirDensity(altitude);
-      
-		// Put them all together to figure out drag
-      float dragForce = 0;
-      if (angle != 0)
-         dragForce = computeDragForce(density, coefficient, radius, v.getSpeed());
-      
-		// Use drag to calculate acceleration
-      float ax = calculateAcceleration(dragForce, mass);
-      
-		// Velocities
-      v.addDx(ax);
-      v.addDy(-computeGravity(altitude) * tInterval);
-      cout << "dx: " << v.getDx() << " dy: " << v.getDy() << endl;
-      
-		// Update position
-      previousX = point.getMetersX();
-      previousY = point.getMetersY();
-      point.addMetersX(v.getDx());
-      point.addMetersY(v.getDy());
-      cout << "distance: " << point.getMetersX() << endl;
-      cout << "altitude: " << point.getMetersY() << endl << endl;
-      
-		// Update hangtime
-      if (altitude > 0) {
-         previousT = hangtime;
-         hangtime += tInterval;
-      }
-      
-   } while (point.getMetersY() > 0);
-	// Show the results
-   float distance = linearInterpolation(0, previousY, point.getMetersY(), previousX, point.getMetersX());
-   
-   float time;
-   if (angle != 0)
-      time = linearInterpolation(distance, previousX, point.getMetersX(), previousT, hangtime);
-   else
-      time = linearInterpolation(0, previousY, point.getMetersY(), previousT, hangtime);
-   
-   displayResult(distance, time);
-   
+   testRunner();
    return 0;
 }
 

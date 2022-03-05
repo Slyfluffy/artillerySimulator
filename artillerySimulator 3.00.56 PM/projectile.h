@@ -12,14 +12,13 @@
 
 #include "position.h"
 #include "velocity.h"
-#include "physics.h"
 
 using namespace std;
 
-//struct Mapping {
-//   float domain;
-//   float range;
-//};
+struct Mapping {
+   float domain;
+   float range;
+};
 
 class Projectile {
 private:
@@ -30,18 +29,18 @@ private:
    float angle;
    float hangTime;
    
-protected:
-   float linearInterpolation(float x, float x0, float x1, float y0, float y1);
-   float linearInterpolation(const Mapping zero, const Mapping one, float d);
-   float linearInperpolation(const Mapping map[], int numMapping, float domain);
+public:
+   float linearInterpolation(float x, float x0, float x1, float y0, float y1)   { return 0; }
+   float linearInterpolation(const Mapping zero, const Mapping one, float d)    { return 0; }
+   float linearInterpolation(const Mapping map[], int numMapping, float domain) { return 0; }
    
-   float computeAirDensity(float altitude);
-   float computeVelocitySound(float altitude);
-   float computeGravity(float altitude);
-   float computeCoefficient(float v, float vSound);
+   float computeAirDensity(float altitude) { return 0; }
+   float computeVelocitySound(float altitude) { return 0; }
+   float computeGravity(float altitude) { return 0; }
+   float computeCoefficient(float v, float vSound) { return 0; }
    
 public:
-   Projectile();
+   Projectile() { }
    Projectile(float angle, Position p);
    Projectile& operator = (const Projectile &p);
    

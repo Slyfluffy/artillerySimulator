@@ -8,7 +8,6 @@
 #ifndef testHowitzer_h
 #define testHowitzer_h
 
-
 #include "position.h"
 #include "howitzer.h"
 #include <cassert>
