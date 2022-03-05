@@ -25,6 +25,7 @@ public:
    void fire();
    
    void runSimulation();
+   void advance();
    void display();
    void reset();
 };

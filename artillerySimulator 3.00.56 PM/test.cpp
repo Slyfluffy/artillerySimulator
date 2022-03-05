@@ -17,4 +17,6 @@
 void testRunner()
 {
    TestPosition().run();
+   TestHowitzer().run();
+   TestProjectile().run();
 }

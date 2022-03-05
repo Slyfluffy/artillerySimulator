@@ -15,8 +15,18 @@
 
 class TestHowitzer {
 public:
-   void runTest();
+   void run() {
+      testDefaultCreation();
+      testNonDefaultCreation();
+      testRotateLeft();
+      testRotateRight();
+      testRotateUp();
+      testRotateDown();
+      testFire();
+      std::cout << "testHowitzer passed!" << std::endl;
+   }
    
+   // Test 1
    void testDefaultCreation() const {
       Howitzer h;
       Position p;
@@ -25,8 +35,10 @@ public:
       assert(h.getPosition().getMetersY() == p.getMetersY());
       assert(h.getAngle() == 0);
       assert(h.getAge() == 0);
+      std::cout << "Test 1 passed!" << std::endl;
    }
    
+   // Test 2
    void testNonDefaultCreation() const {
       Position p(100, 100);
       Howitzer h(p);
@@ -35,8 +47,10 @@ public:
       assert(h.getPosition().getMetersY() == p.getMetersY());
       assert(h.getAngle() == 0);
       assert(h.getAge() == 0);
+      std::cout << "Test 2 passed!" << std::endl;
    }
    
+   // Test 3
    void testRotateLeft() {
       Howitzer h;
       
@@ -64,8 +78,10 @@ public:
       h.setAngle(M_PI/2);
       h.rotateLeft();
       assert(h.getAngle() == ((M_PI/2) - .05));
+      std::cout << "Test 3 passed!" << std::endl;
    }
    
+   //test 4
    void testRotateRight() {
       Howitzer h;
       
@@ -93,8 +109,10 @@ public:
       h.setAngle(M_PI/2);
       h.rotateRight();
       assert(h.getAngle() == ((M_PI/2) + .05));
+      std::cout << "Test 4 passed!" << std::endl;
    }
    
+   // test 5
    void testRotateUp() {
       Howitzer h;
       
@@ -132,8 +150,10 @@ public:
       h.setAngle(M_PI/2);
       h.rotateUp();
       assert(h.getAngle() == ((M_PI/2) - .003));
+      std::cout << "Test 5 passed!" << std::endl;
    }
    
+   // test 6
    void testRotateDown() {
       Howitzer h;
       
@@ -171,13 +191,16 @@ public:
       h.setAngle(M_PI/2);
       h.rotateDown();
       assert(h.getAngle() == ((M_PI/2)));
+      std::cout << "Test 6 passed!" << std::endl;
    }
    
+   // test 7
    void testFire() {
       Howitzer h;
       
       h.fire();
       assert(h.getAge() == 2);
+      std::cout << "Test 7 passed!" << std::endl;
    }
 };
 

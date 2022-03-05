@@ -10,5 +10,6 @@
 #pragma once
 
 #include "testHowitzer.h"
+#include "testProjectile.h"
 
 void testRunner();
