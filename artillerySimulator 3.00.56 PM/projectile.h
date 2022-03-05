@@ -12,13 +12,14 @@
 
 #include "position.h"
 #include "velocity.h"
+#include "physics.h"
 
 using namespace std;
 
-struct Mapping {
-   float domain;
-   float range;
-};
+//struct Mapping {
+//   float domain;
+//   float range;
+//};
 
 class Projectile {
 private:
@@ -40,6 +41,7 @@ protected:
    float computeCoefficient(float v, float vSound);
    
 public:
+   Projectile();
    Projectile(float angle, Position p);
    Projectile& operator = (const Projectile &p);
    
