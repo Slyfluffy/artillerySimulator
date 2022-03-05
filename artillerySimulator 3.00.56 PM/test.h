@@ -9,4 +9,6 @@
 
 #pragma once
 
+#include "testHowitzer.h"
+
 void testRunner();

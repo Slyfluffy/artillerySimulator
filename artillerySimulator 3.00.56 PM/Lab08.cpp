@@ -17,6 +17,7 @@
 #include "uiInteract.h" // for INTERFACE
 #include "uiDraw.h"     // for RANDOM and DRAW*
 #include "ground.h"     // for GROUND
+#include "test.h"
 #include "Simulator.h"
 #include "physics.h"
 #include "velocity.h"
