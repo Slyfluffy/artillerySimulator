@@ -45,6 +45,11 @@
 		C1D4EB3D2577FC14002B56E3 /* test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = test.h; sourceTree = "<group>"; };
 		C1D4EB462577FC25002B56E3 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		C1D4EB472577FC25002B56E3 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
+		CE0263BD27D3C4EE00D3EC7A /* howitzer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = howitzer.h; sourceTree = "<group>"; };
+		CE0263BE27D3C52200D3EC7A /* Simulator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Simulator.h; sourceTree = "<group>"; };
+		CE0263BF27D3C59C00D3EC7A /* projectile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = projectile.h; sourceTree = "<group>"; };
+		CE0263C027D3C85B00D3EC7A /* testHowitzer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = testHowitzer.h; sourceTree = "<group>"; };
+		CE0263C127D3C90400D3EC7A /* testProjectile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = testProjectile.h; sourceTree = "<group>"; };
 		CEB0D94527C3FC6E00096182 /* physics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = physics.h; sourceTree = "<group>"; };
 		CEB0D94927C40C8A00096182 /* velocity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = velocity.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -68,16 +73,21 @@
 				C1D4EB342577FC12002B56E3 /* Lab08.cpp */,
 				C1D4EB322577FC12002B56E3 /* ground.cpp */,
 				C1D4EB382577FC13002B56E3 /* ground.h */,
+				CE0263BD27D3C4EE00D3EC7A /* howitzer.h */,
+				CE0263C027D3C85B00D3EC7A /* testHowitzer.h */,
 				CEB0D94527C3FC6E00096182 /* physics.h */,
 				C1D4EB3C2577FC14002B56E3 /* position.h */,
 				C1D4EB332577FC12002B56E3 /* position.cpp */,
+				C1D4EB372577FC13002B56E3 /* testPosition.h */,
 				C1D4EB3D2577FC14002B56E3 /* test.h */,
 				C1D4EB362577FC13002B56E3 /* test.cpp */,
-				C1D4EB372577FC13002B56E3 /* testPosition.h */,
 				C1D4EB392577FC13002B56E3 /* uiDraw.h */,
 				C1D4EB352577FC12002B56E3 /* uiDraw.cpp */,
 				C1D4EB3B2577FC13002B56E3 /* uiInteract.h */,
 				C1D4EB3A2577FC13002B56E3 /* uiInteract.cpp */,
+				CE0263BF27D3C59C00D3EC7A /* projectile.h */,
+				CE0263C127D3C90400D3EC7A /* testProjectile.h */,
+				CE0263BE27D3C52200D3EC7A /* Simulator.h */,
 				CEB0D94927C40C8A00096182 /* velocity.h */,
 				C1D4EB272577FB0F002B56E3 /* Products */,
 				C1D4EB452577FC25002B56E3 /* Frameworks */,
