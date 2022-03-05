@@ -41,11 +41,16 @@ protected:
    
 public:
    Projectile(float angle, Position p);
+   Projectile& operator = (const Projectile &p);
    
    const float getAltitude();
    const float getDistance();
    const float getSpeed();
    const float getHangTime();
+   const Position getPosition();
+   const Velocity getVelocity();
+   
+   void move();
    
    void reset();
    void draw(ogstream & gout);
