@@ -11,6 +11,13 @@
 #include "position.h"
 #include "uiDraw.h"
 
+/***********************************************
+ * ARTILLERY :: HOWITZER CLASS
+ * This class contains all the data necessary
+ * to run a howitzer object in the Artillery
+ * Simulator. This includes the position, angle,
+ * and drawing of it.
+ **********************************************/
 class Howitzer {
 private:
    Position p;
@@ -18,26 +25,27 @@ private:
    float age;
    
 public:
+   // Constructors
    Howitzer() : p(Position()), angle(0), age(0) {}
    Howitzer(Position p) : p(p), angle(0), age(0) {}
    
+   // Getters
    float getAge() const         { return age;   }
    double getAngle() const       { return angle; }
    Position getPosition() const { return p;     }
    
+   // Setters
    void setAngle(double angle) { this->angle = angle; }
    
+   // Rotation methods
    void rotateLeft();
-   
    void rotateRight();
-   
    void rotateUp();
-   
    void rotateDown();
    
+   // Other
    void fire() { age = 2; }
-   void reset();
-   
+   void reset(Position p);
    void draw(ogstream & gout);
 };
 
