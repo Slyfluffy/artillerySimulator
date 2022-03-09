@@ -15,6 +15,7 @@
 class TestHowitzer {
 public:
    void run() {
+      std::cout << "testHowitzer started.";
       testDefaultCreation();
       testNonDefaultCreation();
       testRotateLeft();
@@ -22,7 +23,7 @@ public:
       testRotateUp();
       testRotateDown();
       testFire();
-      std::cout << "testHowitzer passed!" << std::endl;
+      std::cout << "testHowitzer passed!\n" << std::endl;
    }
    
    // Test 1
@@ -107,7 +108,7 @@ public:
       // 90 degree boundary test
       h.setAngle(M_PI/2);
       h.rotateRight();
-      assert(h.getAngle() == ((M_PI/2) + .05));
+      assert(h.getAngle() == ((M_PI/2)));
       std::cout << "Test 4 passed!" << std::endl;
    }
    
@@ -169,7 +170,7 @@ public:
       // -45 degree test
       h.setAngle(-M_PI/4);
       h.rotateDown();
-      assert(h.getAngle() == ((-M_PI/4) + .003));
+      assert(h.getAngle() == ((-M_PI/4) - .003));
       
       // 0 degree test
       h.setAngle(0);
@@ -179,7 +180,7 @@ public:
       // 45 degree boundary test
       h.setAngle(M_PI/4);
       h.rotateDown();
-      assert(h.getAngle() == ((M_PI/4) - .003));
+      assert(h.getAngle() == ((M_PI/4) + .003));
       
       // Near right boundary test
       h.setAngle((M_PI/2) - .002);

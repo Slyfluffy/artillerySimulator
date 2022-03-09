@@ -48,6 +48,7 @@ public:
       // setup
       // exercise
       Position pos(120.0, 360.0);
+      pos.setZoom(40);
       // verify
       assert(pos.getPixelsX() == 3.0);
       assert(pos.getPixelsY() == 9.0);
@@ -60,6 +61,7 @@ public:
       // setup
       // exercise
       Position pos1(480.0, 240.0);
+      pos1.setZoom(40);
       Position pos2(pos1);
       // verify
       assert(pos2.getPixelsX() == 12.0);

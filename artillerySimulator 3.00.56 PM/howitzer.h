@@ -14,43 +14,31 @@
 class Howitzer {
 private:
    Position p;
-   float angle;
+   double angle;
    float age;
    
 public:
-   Howitzer() { }
-   Howitzer(Position p) { }
+   Howitzer() : p(Position()), angle(0), age(0) {}
+   Howitzer(Position p) : p(p), angle(0), age(0) {}
    
    float getAge() const         { return age;   }
-   float getAngle() const       { return angle; }
+   double getAngle() const       { return angle; }
    Position getPosition() const { return p;     }
    
-   void setAngle(float angle) { }
+   void setAngle(double angle) { this->angle = angle; }
    
-   void rotateLeft() {
-      
-   }
+   void rotateLeft();
    
-   void rotateRight() {
-      
-   }
+   void rotateRight();
    
-   void rotateUp() {
-      
-   }
+   void rotateUp();
    
-   void rotateDown() {
-      
-   }
+   void rotateDown();
    
    void fire() { age = 2; }
-   void reset() {
-      
-   }
+   void reset();
    
-   void draw(ogstream & gout) {
-      
-   }
+   void draw(ogstream & gout);
 };
 
 #endif /* howitzer_h */

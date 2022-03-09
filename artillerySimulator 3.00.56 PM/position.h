@@ -24,7 +24,7 @@ public:
    // constructors
    Position()            : x(0.0), y(0.0)  {}
    Position(double x, double y); // in meters
-   Position(const Position & pt) : x(pt.x), y(pt.y) {}
+   Position(const Position & pt) : x(pt.x), y(pt.y), metersFromPixels(pt.metersFromPixels) {}
    Position& operator = (const Position& pt);
 
    // getters
@@ -34,12 +34,12 @@ public:
    double getPixelsY() const { return y / metersFromPixels; }
 
    // setters
-   void setMetersX(double xMeters)       { this->x = xMeters;           }
-   void setMetersY(double yMeters)       { this->y = yMeters;           }
+   void setMetersX(double xMeters)       { this->x = xMeters;                       }
+   void setMetersY(double yMeters)       { this->y = yMeters;                       }
    void addMetersX(double dxMeters)      { setMetersX(getMetersX() + dxMeters);     }
    void addMetersY(double dyMeters)      { setMetersY(getMetersY() + dyMeters);     }
-   void setPixelsX(double xPixels)       { this->x = xPixels * metersFromPixels;           }
-   void setPixelsY(double yPixels)       { this->y = yPixels * metersFromPixels;           }
+   void setPixelsX(double xPixels)       { this->x = xPixels * metersFromPixels;    }
+   void setPixelsY(double yPixels)       { this->y = yPixels * metersFromPixels;    }
    void addPixelsX(double dxPixels)      { setPixelsX(getPixelsX() + dxPixels);     }
    void addPixelsY(double dyPixels)      { setPixelsY(getPixelsY() + dyPixels);     }
 
