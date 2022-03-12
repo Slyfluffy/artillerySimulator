@@ -1,5 +1,5 @@
 /***********************************************************************
- * Source File:
+ * Source File:   
  *    Test : Test runner
  * Author:
  *    Br. Helfrich
@@ -16,7 +16,7 @@
  ****************************************************************/
 void testRunner()
 {
-   TestPosition().run();
+   //TestPosition().run();
    TestHowitzer().run();
    TestProjectile().run();
 }

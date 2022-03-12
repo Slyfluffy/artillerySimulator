@@ -26,10 +26,10 @@ float calculateVSpeed(float dy, float angle) { return dy * cos(angle); }
 float calculateHSpeed(float dx, float angle) { return dx * sin(angle); }
 float calculateTSpeed(float dx, float dy) { return sqrt((dx * dx) + (dy * dy)); }
 
-//struct Mapping {
-//   float domain;
-//   float range;
-//};
+struct Mapping {
+   float domain;
+   float range;
+};
 
 /*
  * PHYSICS :: LINEARINTERPOLATION

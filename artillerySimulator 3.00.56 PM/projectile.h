@@ -12,6 +12,7 @@
 
 #include "position.h"
 #include "velocity.h"
+#include "uiDraw.h"
 
 using namespace std;
 
@@ -30,17 +31,17 @@ private:
    float hangTime;
    
 public:
-   float linearInterpolation(float x, float x0, float x1, float y0, float y1)   { return 0; }
-   float linearInterpolation(const Mapping zero, const Mapping one, float d)    { return 0; }
-   float linearInterpolation(const Mapping map[], int numMapping, float domain) { return 0; }
+	double linearInterpolation(float x, float x0, float x1, float y0, float y1);
+	double linearInterpolation(const Mapping& zero, const Mapping& one, float d);
+	double linearInterpolation(const Mapping map[], int numMapping, float domain);
    
-   float computeAirDensity(float altitude) { return 0; }
-   float computeVelocitySound(float altitude) { return 0; }
-   float computeGravity(float altitude) { return 0; }
-   float computeCoefficient(float v, float vSound) { return 0; }
+	double computeAirDensity(float altitude);
+	float computeVelocitySound(float altitude);
+	float computeGravity(float altitude);
+	float computeCoefficient(float v, float vSound);
    
 public:
-   Projectile() { }
+	Projectile();
    Projectile(float angle, Position p);
    Projectile& operator = (const Projectile &p);
    
