@@ -15,7 +15,7 @@
 class TestHowitzer {
 public:
    void run() {
-      std::cout << "testHowitzer started.";
+      std::cout << "testHowitzer started.\n";
       testDefaultCreation();
       testNonDefaultCreation();
       testRotateLeft();
