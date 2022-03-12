@@ -11,6 +11,8 @@
 #include "position.h"
 #include "uiDraw.h"
 
+const float M_PI = 3.14159;
+
 /***********************************************
  * ARTILLERY :: HOWITZER CLASS
  * This class contains all the data necessary

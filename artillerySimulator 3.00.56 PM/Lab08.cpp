@@ -238,6 +238,7 @@ int main(int argc, char** argv)
 //   displayResult(distance, time);
    
    testRunner();
+   cout << "All tests passed";
    return 0;
 }
 
