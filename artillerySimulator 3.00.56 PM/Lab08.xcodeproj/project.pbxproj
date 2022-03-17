@@ -15,6 +15,7 @@
 		C1D4EB432577FC14002B56E3 /* uiInteract.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C1D4EB3A2577FC13002B56E3 /* uiInteract.cpp */; };
 		C1D4EB482577FC25002B56E3 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1D4EB462577FC25002B56E3 /* OpenGL.framework */; };
 		C1D4EB492577FC25002B56E3 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1D4EB472577FC25002B56E3 /* GLUT.framework */; };
+		CE00B69527E383A700A5FB23 /* projectile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE00B69427E383A700A5FB23 /* projectile.cpp */; };
 		CE1BC97D27D8643F00FA2A81 /* howitzer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE1BC97C27D8643F00FA2A81 /* howitzer.cpp */; };
 		CE4EFDEF27D41EF900B9440B /* testHowitzer.h in Sources */ = {isa = PBXBuildFile; fileRef = CE0263C027D3C85B00D3EC7A /* testHowitzer.h */; };
 		CE4EFDF027D41EF900B9440B /* testPosition.h in Sources */ = {isa = PBXBuildFile; fileRef = C1D4EB372577FC13002B56E3 /* testPosition.h */; };
@@ -57,6 +58,7 @@
 		C1D4EB3D2577FC14002B56E3 /* test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = test.h; sourceTree = "<group>"; };
 		C1D4EB462577FC25002B56E3 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		C1D4EB472577FC25002B56E3 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
+		CE00B69427E383A700A5FB23 /* projectile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = projectile.cpp; sourceTree = "<group>"; };
 		CE0263BE27D3C52200D3EC7A /* Simulator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Simulator.h; sourceTree = "<group>"; };
 		CE0263BF27D3C59C00D3EC7A /* projectile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = projectile.h; sourceTree = "<group>"; };
 		CE0263C027D3C85B00D3EC7A /* testHowitzer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = testHowitzer.h; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 				C1D4EB3B2577FC13002B56E3 /* uiInteract.h */,
 				C1D4EB3A2577FC13002B56E3 /* uiInteract.cpp */,
 				CE0263BF27D3C59C00D3EC7A /* projectile.h */,
+				CE00B69427E383A700A5FB23 /* projectile.cpp */,
 				CE0263C127D3C90400D3EC7A /* testProjectile.h */,
 				CE0263BE27D3C52200D3EC7A /* Simulator.h */,
 				CEB0D94927C40C8A00096182 /* velocity.h */,
@@ -181,6 +184,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE00B69527E383A700A5FB23 /* projectile.cpp in Sources */,
 				CE4EFDF327D4206100B9440B /* ground.h in Sources */,
 				CE4EFDEF27D41EF900B9440B /* testHowitzer.h in Sources */,
 				CE4EFDF627D4206100B9440B /* position.h in Sources */,
