@@ -54,7 +54,7 @@ void Howitzer::rotateUp() {
 };
 
 /*************************************
- * HOWITZER :: ROTATEDown
+ * HOWITZER :: ROTATEDOWN
  * INPUTS  :: NONE
  * OUTPUTS :: NONE
  * Rotate the howitzer down depending
@@ -87,14 +87,4 @@ void Howitzer::reset(Position p) {
    this->p = p;
    age = 0;
    angle = 0;
-};
-
-/********************
- * HOWITZER :: DRAW
- * INPUTS  :: gout
- * OUTPUTS :: NONE
- * draw the Howitzer!
- *******************/
-void Howitzer::draw(ogstream & gout) {
-   gout.drawHowitzer(p, angle, age);
 };

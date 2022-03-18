@@ -24,7 +24,7 @@ public:
    // constructors
    Position()            : x(0.0), y(0.0)  {}
    Position(double x, double y); // in meters
-   Position(const Position & pt) : x(pt.x), y(pt.y), metersFromPixels(pt.metersFromPixels) {}
+   Position(const Position & pt) : x(pt.x), y(pt.y) { }
    Position& operator = (const Position& pt);
 
    // getters
@@ -53,7 +53,7 @@ public:
 private:
    double x;                 // horizontal position
    double y;                 // vertical position
-   double metersFromPixels;
+   static double metersFromPixels;
 };
 
 // stream I/O useful for debugging

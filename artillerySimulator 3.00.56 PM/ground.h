@@ -23,7 +23,7 @@ public:
    Ground(const Position &posUpperRight);
    
    // reset the game
-   void reset(Position & posHowitzer);
+   void reset(Position &posHowitzer);
 
    // draw the ground on the screen
    void draw(ogstream & gout) const;

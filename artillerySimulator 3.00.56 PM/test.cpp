@@ -16,7 +16,7 @@
  ****************************************************************/
 void testRunner()
 {
-   //TestPosition().run();
+   TestPosition().run();
    TestHowitzer().run();
-   TestProjectile().run();
+   //TestProjectile().run();
 }

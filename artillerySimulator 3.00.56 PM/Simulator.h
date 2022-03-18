@@ -13,21 +13,35 @@
 #include "uiInteract.h"
 #include "ground.h"
 
+/***********************************************************
+ * ARTILLERY :: SIMULATOR CLASS
+ * Main class that contains everything to run the simulation
+ **********************************************************/
 class Simulator {
 private:
+   Position ptUpperRight;
    Howitzer howitzer;
    Projectile projectile;
-   Interface ui;
    Ground ground;
+   float tInterval;
    
 public:
-   void input(Interface & ui);
+   // Constructors
+   Simulator(Position ptUpperRight) : ptUpperRight(ptUpperRight), ground(ptUpperRight),
+                                      tInterval(.5) { reset(); }
+
+   // driver method
+   void runSimulation(Interface ui);
+
+   // Utility methods
    void fire();
-   
-   void runSimulation();
+   bool isTargetHit();
    void advance();
-   void display();
    void reset();
+
+   // User related methods
+   void input(Interface & ui);
+   void display();
 };
 
 #endif /* Simulator_h */

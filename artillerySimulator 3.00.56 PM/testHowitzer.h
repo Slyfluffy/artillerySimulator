@@ -32,8 +32,8 @@ public:
       Howitzer h;
       Position p;
       
-      assert(h.getPosition().getMetersX() == p.getMetersX());
-      assert(h.getPosition().getMetersY() == p.getMetersY());
+      assert(h.getPosition()->getMetersX() == p.getMetersX());
+      assert(h.getPosition()->getMetersY() == p.getMetersY());
       assert(h.getAngle() == 0);
       assert(h.getAge() == 0);
       std::cout << "Test 1 passed!" << std::endl;
@@ -44,8 +44,8 @@ public:
       Position p(100, 100);
       Howitzer h(p);
       
-      assert(h.getPosition().getMetersX() == p.getMetersX());
-      assert(h.getPosition().getMetersY() == p.getMetersY());
+      assert(h.getPosition()->getMetersX() == p.getMetersX());
+      assert(h.getPosition()->getMetersY() == p.getMetersY());
       assert(h.getAngle() == 0);
       assert(h.getAge() == 0);
       std::cout << "Test 2 passed!" << std::endl;

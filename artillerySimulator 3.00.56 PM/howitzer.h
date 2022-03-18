@@ -11,7 +11,7 @@
 #include "position.h"
 #include "uiDraw.h"
 
-const float M_PI = 3.14159;
+//const float M_PI = 3.14159;
 
 /***********************************************
  * ARTILLERY :: HOWITZER CLASS
@@ -32,9 +32,9 @@ public:
    Howitzer(Position p) : p(p), angle(0), age(0) {}
    
    // Getters
-   float getAge() const         { return age;   }
-   double getAngle() const       { return angle; }
-   Position getPosition() const { return p;     }
+   const float getAge() const         { return age;   }
+   const double getAngle() const      { return angle; }
+   Position * getPosition() { return &p;     }
    
    // Setters
    void setAngle(double angle) { this->angle = angle; }
@@ -48,7 +48,7 @@ public:
    // Other
    void fire() { age = 2; }
    void reset(Position p);
-   void draw(ogstream & gout);
+   void draw(ogstream & gout) { gout.drawHowitzer(p, angle, age); age -= .1; }
 };
 
 #endif /* howitzer_h */

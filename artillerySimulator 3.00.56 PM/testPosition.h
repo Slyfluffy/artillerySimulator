@@ -36,6 +36,7 @@ public:
       // setup
       // exercise
       Position pos;
+      pos.setZoom(40);
       // verify
       assert(pos.getPixelsX() == 0.0);
       assert(pos.getPixelsY() == 0.0);

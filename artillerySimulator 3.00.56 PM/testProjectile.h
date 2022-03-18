@@ -103,7 +103,7 @@ public:
        // Table
        assert(p.computeAirDensity(15000) == float(0.1948));
        // Low Interp 1.1685
-       assert(p.computeAirDensity(500) == 1.1685);
+       assert(p.computeAirDensity(500) == float(1.1685));
        // High Interp
        //assert(p.computeAirDensity(65000) == float(0.00019625));
    }
@@ -136,7 +136,7 @@ public:
        // Low Interp (mach = .4)
        assert(p.computeCoefficient(120, 300) == 0.1644);
        // High Interp (mach = 3.945)
-       assert(p.computeCoefficient(1183.5, 300) == 0.2481);
+       assert(p.computeCoefficient(1183.5, 300) == float(0.2481));
    }
    
 //   void testMove() {

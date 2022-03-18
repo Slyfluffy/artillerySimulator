@@ -218,7 +218,7 @@ void ogstream :: drawHowitzer(const Position & pos, double angle, double age)
    // outline for the Barrel, the Base, and the muzzle flash
    PT pointsBarrel[] = 
    {
-      {0, 0},  {-1, 18}, {1, 18}, {0, 0},  // barrell
+      {0, 0},  {-1, 18}, {1, 18}, {0, 0},  // barrel
       {-2, 2}, {-2, 10}, {2, 10}, {2, 2}, {0, 0}  // recoil
    };
    PT pointsBase[] =
