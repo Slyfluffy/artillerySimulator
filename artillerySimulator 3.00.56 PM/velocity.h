@@ -34,8 +34,8 @@ public:
    void setDx(float dx) { this->dx = dx; }
    void setDy(float dy) { this->dy = dy; }
    void setVfromSpeed(float speed, float angle) {
-      dx = speed / sin(angle);
-      dy = speed / cos(angle);
+      dx = speed * sin(angle);
+      dy = speed * cos(angle);
    }
    
    //Adders
