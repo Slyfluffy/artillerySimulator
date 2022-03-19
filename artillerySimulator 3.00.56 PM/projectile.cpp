@@ -204,6 +204,7 @@ void Projectile::fire(float angle, Position p, float tInverval) {
    this->angle = angle;
    this->p = p;
    alive = true;
+   //827 * tInverval
    v.setVfromSpeed((827 * tInverval), angle);
    hangTime = 0;
 }
@@ -282,11 +283,11 @@ void Projectile::draw(ogstream & gout) {
    if (!isAlive())
       return;
    
-   double age = 9;
-   gout.drawProjectile(p, age--);
+   double age = 0;
+   gout.drawProjectile(p, age++);
    
    list<Position> :: reverse_iterator it = tail.rbegin();
    while (it != tail.rend()) {
-      gout.drawProjectile((*it++), age--);
+      gout.drawProjectile((*it++), age++);
    }
 }

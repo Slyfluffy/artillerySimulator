@@ -5,13 +5,15 @@
 //  Created by Journey Curtis on 3/5/22.
 //
 
+#define _USE_MATH_DEFINES
+#include "math.h"
+
 #ifndef howitzer_h
 #define howitzer_h
 
 #include "position.h"
 #include "uiDraw.h"
 
-//const float M_PI = 3.14159;
 
 /***********************************************
  * ARTILLERY :: HOWITZER CLASS

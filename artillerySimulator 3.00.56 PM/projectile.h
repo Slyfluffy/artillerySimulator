@@ -8,11 +8,15 @@
 #ifndef projectile_h
 #define projectile_h
 
+#define _USE_MATH_DEFINES
+#include "math.h"
+
 #include <list>
 
 #include "position.h"
 #include "velocity.h"
 #include "uiDraw.h"
+
 
 using namespace std;
 
@@ -71,7 +75,7 @@ public:
    
    // Setters
    void setAlive() { alive = true; }
-   void kill() { alive = false; }
+   void kill() { alive = false; tail.clear(); }
    
    // Other methods
    void fire(float angle, Position p, float tInverval);

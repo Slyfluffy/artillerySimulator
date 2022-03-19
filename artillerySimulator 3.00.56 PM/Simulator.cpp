@@ -77,6 +77,7 @@ void Simulator::runSimulation(Interface ui) {
    input(ui);
    
    advance();
+   
    if (isTargetHit())
       reset();
 
@@ -93,8 +94,11 @@ void Simulator::runSimulation(Interface ui) {
 void Simulator::advance() {
    projectile.move(tInterval);
    
-   if (ground.getElevationMeters(projectile.getPosition()) <= 0)
-      projectile.kill();
+   if (ground.getElevationMeters(projectile.getPosition()) <= 0) {
+       projectile.kill();
+   }
+   if (projectile.getAltitude() < 0)
+       projectile.kill();
 }
 
 /*****************************
@@ -109,6 +113,24 @@ void Simulator::display() {
    ground.draw(gout);
    howitzer.draw(gout);
    projectile.draw(gout);
+
+   // Display status
+   Position start = Position();
+   start.setPixelsX(570);
+   start.setPixelsY(490);
+   gout.setPosition(start);
+   if (!projectile.isAlive())
+       gout << "Angle: " << howitzer.getAngle();
+   else {
+       gout << "Altitude: " << projectile.getAltitude() << endl;
+       gout << "Speed: " << projectile.getSpeed() << endl;
+       gout << "Distance: " << projectile.getDistance() << endl;
+       gout << "Hangtime: " << projectile.getHangTime() << endl;
+       gout << "Pos: " << projectile.getPosition().getMetersX() << " - " 
+           << projectile.getPosition().getMetersY() << endl;
+       gout << "Ground: " << ground.getElevationMeters(projectile.getPosition()) << endl;
+       gout << "Alive: " << projectile.isAlive();
+   }
 }
 
 /**********************************

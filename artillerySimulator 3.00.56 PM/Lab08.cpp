@@ -56,8 +56,8 @@ int WINAPI wWinMain(
 int main(int argc, char** argv)
 #endif // !_WIN32
 {
-   testRunner();
-   cout << "All tests passed";
+   //testRunner();
+   //cout << "All tests passed";
    
    // Initialize OpenGL
    Position ptUpperRight;
@@ -65,7 +65,7 @@ int main(int argc, char** argv)
    ptUpperRight.setPixelsY(500.0);
    Position().setZoom(40.0 /* 42 meters equals 1 pixel */);
    Interface ui(0, NULL,
-      "Artilllery Simulator",   /* name on the window */
+      "Artillery Simulator",   /* name on the window */
       ptUpperRight);
 
    // Initialize the simulator
