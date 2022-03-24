@@ -92,8 +92,9 @@ void Simulator::advance() {
    if (projectile.isAlive())
       projectile.move(tInterval);
    
-   double elevation = projectile.getAltitude() - ground.getElevationMeters(projectile.getPosition());
-   if (elevation <= 0)
+   // Figure out altitude from ground.
+   double altitude = projectile.getAltitude() - ground.getElevationMeters(projectile.getPosition());
+   if (altitude <= 0)
        projectile.kill();
    else if (projectile.getDistance() >= ptUpperRight.getMetersX() || projectile.getDistance() <= 0)
       projectile.kill();

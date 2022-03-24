@@ -65,6 +65,7 @@ public:
 	Projectile();
    
    // Getters
+   // getAltitude returns altitude from sea level.
    const float getAltitude()    { return p.getMetersY(); }
    const float getDistance()    { return p.getMetersX(); }
    const float getSpeed()       { return v.getSpeed(); }
