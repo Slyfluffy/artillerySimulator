@@ -17,14 +17,11 @@ void Simulator::input(Interface &ui) {
    // Movement of howitzer
    if (ui.isUp())
       howitzer.rotateUp();
-   
-   if (ui.isDown())
+   else if (ui.isDown())
       howitzer.rotateDown();
-   
-   if (ui.isLeft())
+   else if (ui.isLeft())
       howitzer.rotateLeft();
-   
-   if (ui.isRight())
+   else if (ui.isRight())
       howitzer.rotateRight();
    
    // Firing of howitzer
