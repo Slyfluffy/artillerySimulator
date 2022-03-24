@@ -56,8 +56,8 @@ bool Simulator::isTargetHit() {
    float distance = projectile.getDistance();
    float altitude = projectile.getAltitude();
    
-   if ((distance >= (targetX - 20)) && (distance <= (targetX + 20)))
-      if ((altitude >= (targetY - 10)) && (altitude <= (targetY + 10)))
+   if ((distance >= (targetX - 200)) && (distance <= (targetX + 200)))
+      if ((altitude >= (targetY - 200)) && (altitude <= (targetY + 200)))
          return true;
    
    return false;
@@ -89,13 +89,14 @@ void Simulator::runSimulation(Interface ui) {
  * the projectile.
  ********************************/
 void Simulator::advance() {
-   projectile.move(tInterval);
+   if (projectile.isAlive())
+      projectile.move(tInterval);
    
-   if (ground.getElevationMeters(projectile.getPosition()) <= 0) {
+   double elevation = projectile.getAltitude() - ground.getElevationMeters(projectile.getPosition());
+   if (elevation <= 0)
        projectile.kill();
-   }
-   if (projectile.getAltitude() < 0)
-       projectile.kill();
+   else if (projectile.getDistance() >= ptUpperRight.getMetersX() || projectile.getDistance() <= 0)
+      projectile.kill();
 }
 
 /*****************************
@@ -108,25 +109,21 @@ void Simulator::advance() {
 void Simulator::display() {
    ogstream gout;
    ground.draw(gout);
-   howitzer.draw(gout);
+   howitzer.draw(gout, tInterval);
    projectile.draw(gout);
 
    // Display status
    Position start = Position();
-   start.setPixelsX(570);
-   start.setPixelsY(490);
+   start.setPixelsX(550);
+   start.setPixelsY(480);
    gout.setPosition(start);
    if (!projectile.isAlive())
-       gout << "Angle: " << howitzer.getAngle();
+       gout << "Angle: " << howitzer.getAngleDegrees();
    else {
        gout << "Altitude: " << projectile.getAltitude() << endl;
        gout << "Speed: " << projectile.getSpeed() << endl;
        gout << "Distance: " << projectile.getDistance() << endl;
        gout << "Hangtime: " << projectile.getHangTime() << endl;
-       gout << "Pos: " << projectile.getPosition().getMetersX() << " - " 
-           << projectile.getPosition().getMetersY() << endl;
-       gout << "Ground: " << ground.getElevationMeters(projectile.getPosition()) << endl;
-       gout << "Alive: " << projectile.isAlive();
    }
 }
 

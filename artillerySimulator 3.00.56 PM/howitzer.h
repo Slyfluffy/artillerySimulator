@@ -30,13 +30,14 @@ private:
    
 public:
    // Constructors
-   Howitzer() : p(Position()), angle(0), age(0) {}
-   Howitzer(Position p) : p(p), angle(0), age(0) {}
+   Howitzer() : p(Position()), angle(0), age(0)  { }
+   Howitzer(Position p) : p(p), angle(0), age(0) { }
    
    // Getters
-   const float getAge() const         { return age;   }
-   const double getAngle() const      { return angle; }
-   Position * getPosition() { return &p;     }
+   const float getAge()    const { return age;   }
+   const double getAngle() const { return angle; }
+   const float  getAngleDegrees() const { return angle * (180/M_PI); }
+   Position * getPosition()      { return &p;    }
    
    // Setters
    void setAngle(double angle) { this->angle = angle; }
@@ -50,7 +51,7 @@ public:
    // Other
    void fire() { age = 2; }
    void reset(Position p);
-   void draw(ogstream & gout) { gout.drawHowitzer(p, angle, age); age -= .1; }
+   void draw(ogstream & gout, float tInterval) { gout.drawHowitzer(p, angle, age); age -= tInterval; }
 };
 
 #endif /* howitzer_h */

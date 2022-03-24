@@ -69,13 +69,13 @@ public:
    const float getDistance()    { return p.getMetersX(); }
    const float getSpeed()       { return v.getSpeed(); }
    const float getHangTime()    { return hangTime; }
+   const bool  isAlive()        { return alive; }
    const Position getPosition() { return p; }
    const Velocity getVelocity() { return v; }
-   const bool isAlive() { return alive; }
    
    // Setters
    void setAlive() { alive = true; }
-   void kill() { alive = false; tail.clear(); }
+   void kill()     { alive = false; tail.clear(); }
    
    // Other methods
    void fire(float angle, Position p, float tInverval);

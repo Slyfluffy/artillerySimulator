@@ -88,5 +88,5 @@ void Howitzer::reset(Position p) {
    // We need a new position due to everything changing in simulation.
    this->p = p;
    age = 0;
-   angle = 0;
+   setAngle(0);
 };
