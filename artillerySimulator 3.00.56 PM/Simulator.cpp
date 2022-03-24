@@ -68,7 +68,7 @@ bool Simulator::isTargetHit() {
  * INPUTS  :: ui
  * OUTPUTS :: NONE
  * Runs the simulator by calling
- * all the methods.
+ * all the appropriate methods.
  ********************************/
 void Simulator::runSimulation(Interface ui) {
    input(ui);
