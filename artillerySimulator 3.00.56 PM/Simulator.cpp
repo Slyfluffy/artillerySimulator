@@ -93,9 +93,11 @@ void Simulator::advance() {
       projectile.move(tInterval);
    
    // Figure out altitude from ground.
+   // If it hits the ground, it dies
    double altitude = projectile.getAltitude() - ground.getElevationMeters(projectile.getPosition());
    if (altitude <= 0)
        projectile.kill();
+   // If it goes out of the bounds of the window, it dies
    else if (projectile.getDistance() >= ptUpperRight.getMetersX() || projectile.getDistance() <= 0)
       projectile.kill();
 }

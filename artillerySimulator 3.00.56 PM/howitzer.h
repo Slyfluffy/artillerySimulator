@@ -30,8 +30,8 @@ private:
    
 public:
    // Constructors
-   Howitzer() : p(Position()), angle(0), age(0)  { }
-   Howitzer(Position p) : p(p), angle(0), age(0) { }
+   Howitzer() : p(Position()), angle(0), age(-0.1)  { }
+   Howitzer(Position p) : p(p), angle(0), age(-0.1) { }
    
    // Getters
    const float getAge()    const { return age;   }

@@ -85,6 +85,7 @@ void Howitzer::rotateDown() {
 void Howitzer::reset(Position p) {
    // We need a new position due to everything changing in simulation.
    this->p = p;
-   age = 0;
+   // This keeps the muzzle flash from being drawn 
+   age = -0.1;
    setAngle(0);
 };

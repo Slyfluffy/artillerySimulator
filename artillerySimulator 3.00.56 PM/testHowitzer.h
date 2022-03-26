@@ -12,6 +12,8 @@
 #include "howitzer.h"
 #include <cassert>
 
+//const float M_PI = 3.14159;
+
 
 class TestHowitzer {
 public:
